@@ -4,19 +4,43 @@ const words = [
   ['fire engine', 'basketball'],
 ];
 
-for (i = 0; i < 6; i++) {
+
+// Function that creates yellow boxes, with parameter of type array
+
+const createYellowBox = (array) => {
+  // Create 1 yellow row 
+  const row = document.createElement('div')
+  row.innerText = '';
+  row.classList.add('row');
+
+  // create get the elements from the input array and create an element for each 
+  console.log("creating word elements..");
+  for (m = 0; m < array.length; m++) {
+    const word = document.createElement('span');
+    word.innerText = array[m];
+    word.classList.add('word');
+    //append each element to the respective row element    
+    row.appendChild(word);
+  }
+
+  // return the created yellow box with its words
+  return row;
+
+}
+
+
+// for loop to create the container and a series of yellow boxes
+for (i = 0; i < 2; i++) {
   //Create grey container to hold row
   const container = document.createElement('div');
   container.innerText = '';
   container.classList.add('container');
   console.log(`created grey box ${i}`);
 
-  // Create 2 yellow rows using for loop and push to a new array
-  const rowElements = [];
+  // Create the yellow rows using for loop and push to a new array
+  const rowElements = []; //new array to store yellow rows
   for (j = 0; j < words.length; j++) {
-    const row = document.createElement('div')
-    row.innerText = '';
-    row.classList.add('row');
+    const row = createYellowBox(words[j])
     rowElements.push(row);
   }
 
@@ -24,24 +48,9 @@ for (i = 0; i < 6; i++) {
   document.body.appendChild(container);
   console.log(`appending grey box ${i}`);
 
-  
-  console.log("creating words..");
-  //For loop through each row
+  //Append rows to container
   for (k = 0; k < rowElements.length; k++) {
-    // create temporary variable for this row element
-    const tempRow = rowElements[k];
-    // append it to the container
-    container.appendChild(tempRow);
-
-    // create 2 word elements and append each element to the respective row element
-    const wordArray = words[k];
-    for (m = 0; m < wordArray.length; m++) {
-      const word = document.createElement('span');
-      word.innerText = wordArray[m];
-      word.classList.add('word');
-      // append to this row
-      tempRow.appendChild(word);
-    }
+    container.appendChild(rowElements[k]);
   }
 
 }
