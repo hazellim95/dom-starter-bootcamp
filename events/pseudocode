@@ -1,0 +1,18 @@
+//global variable to store current grey container element
+
+// Function that creates yellow boxes, with parameter of type array
+
+
+// Generate grey box with 
+
+//Create main submit button to generate grey box
+
+const button = document.createElement('button');
+button.innerText = 'submit';
+button.classList.add('button');
+//Append button to body
+document.body.appendChild(button);
+//Add click event listener with a callback function to it
+//Other types of events that can be attached to the button: dblclick, mouseenter, mouseleave.
+button.addEventListener('click', createContainer)
+
